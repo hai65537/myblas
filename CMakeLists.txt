@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 project(
   myblas
   DESCRIPTION "my BLAS-like library"
-  LANGUAGES C CXX
+  LANGUAGES CXX
 )
 
 set(CMAKE_C_EXTENSIONS OFF)
