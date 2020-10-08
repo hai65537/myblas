@@ -1,6 +1,5 @@
-#include "level1/scal.h"
+#include "myblas/level1/scal.h"
 #include "myblas.h"
-#include <type_traits>
 
 __BEGIN_MYBLAS_C_DECLS
 

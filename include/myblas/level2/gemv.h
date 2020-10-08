@@ -1,8 +1,8 @@
 #ifndef MYBLAS_GEMV_H
 #define MYBLAS_GEMV_H
 
-#include "level1/dot.h"
-#include "level1/scal.h"
+#include "myblas/level1/dot.h"
+#include "myblas/level1/scal.h"
 #include <type_traits>
 
 namespace myblas {

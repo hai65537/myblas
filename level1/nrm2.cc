@@ -1,4 +1,4 @@
-#include "level1/nrm2.h"
+#include "myblas/level1/nrm2.h"
 #include "myblas.h"
 
 __BEGIN_MYBLAS_C_DECLS

@@ -24,16 +24,17 @@ add_library(myblas ${MYBLAS_LIB_TYPE})
 target_sources(
   myblas
   PRIVATE
+  # level 1
   level1/axpy.cc
   level1/copy.cc
   level1/dot.cc
   level1/nrm2.cc
   level1/scal.cc
+  # level 2
   level2/gemv.cc
 )
 target_include_directories(
   myblas
-  PRIVATE "${PROJECT_SOURCE_DIR}"
   PUBLIC "${PROJECT_SOURCE_DIR}/include"
 )
 target_compile_options(myblas PRIVATE "-Wall" "-Wextra")
