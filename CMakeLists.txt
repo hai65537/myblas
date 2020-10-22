@@ -1,16 +1,12 @@
 cmake_minimum_required(VERSION 3.10)
-project(
-  myblas
-  DESCRIPTION "my BLAS-like library"
-  LANGUAGES CXX
-)
 
-set(CMAKE_C_EXTENSIONS OFF)
-set(CMAKE_C_STANDARD 11)
-set(CMAKE_C_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+  project(
+    myblas
+    DESCRIPTION "my BLAS-like library"
+    LANGUAGES CXX
+  )
+endif()
 
 option(MYBLAS_OPTIMIZE_FOR_NATIVE "Build with -march=native" OFF)
 
@@ -37,7 +33,19 @@ target_include_directories(
   myblas
   PUBLIC "${PROJECT_SOURCE_DIR}/include"
 )
+
 target_compile_options(myblas PRIVATE "-Wall" "-Wextra")
+set_target_properties(
+  myblas
+  PROPERTIES
+  CXX_EXTENSIONS OFF
+  CXX_STANDARD 17
+  CXX_STANDARD_REQUIRED ON
+)
+
 if("${CMAKE_BUILD_TYPE}" STREQUAL "Release" AND ${MYBLAS_OPTIMIZE_FOR_NATIVE})
   target_compile_options(myblas PUBLIC "-march=native")
 endif()
+
+target_link_options(myblas PRIVATE "-nodefaultlibs")
+target_link_libraries(myblas m)
