@@ -31,7 +31,7 @@ target_sources(
 )
 target_include_directories(
   myblas
-  PUBLIC "${PROJECT_SOURCE_DIR}/include"
+  PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include"
 )
 
 target_compile_options(myblas PRIVATE "-Wall" "-Wextra")
