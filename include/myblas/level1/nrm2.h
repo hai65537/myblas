@@ -11,7 +11,7 @@ namespace myblas {
 template <typename T, std::enable_if_t<std::is_floating_point_v<T>, int> = 0>
 static inline T nrm2(const int n, const T *x) {
   if (n == 1) {
-    return std::abs(x[0]);
+    return std::fabs(x[0]);
   }
   T sum = 0;
   for (int i = 0; i < n; ++i) {

@@ -34,7 +34,7 @@ target_include_directories(
   PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include"
 )
 
-target_compile_options(myblas PRIVATE "-Wall" "-Wextra")
+target_compile_options(myblas PRIVATE -Wall -Wextra)
 set_target_properties(
   myblas
   PROPERTIES
@@ -43,9 +43,12 @@ set_target_properties(
   CXX_STANDARD_REQUIRED ON
 )
 
-if("${CMAKE_BUILD_TYPE}" STREQUAL "Release" AND ${MYBLAS_OPTIMIZE_FOR_NATIVE})
-  target_compile_options(myblas PUBLIC "-march=native")
+if("${CMAKE_BUILD_TYPE}" STREQUAL Release AND ${MYBLAS_OPTIMIZE_FOR_NATIVE})
+  target_compile_options(myblas PRIVATE -march=native)
 endif()
 
-target_link_options(myblas PRIVATE "-nodefaultlibs")
+target_link_options(myblas PRIVATE -nodefaultlibs)
 target_link_libraries(myblas m)
+
+install(TARGETS myblas LIBRARY DESTINATION lib)
+install(DIRECTORY include/ DESTINATION include)
